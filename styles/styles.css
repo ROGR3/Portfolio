@@ -1,0 +1,295 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=League+Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap");
+:root {
+  --bg-color: white;
+  --main-button-bg-color: rgb(253, 239, 214);
+  --main-header-color: #949482;
+  --text-color: #5E5E5E;
+  --links-color: #787860;
+  --heading-color: #1B1B1B;
+  --splitter-text: white;
+  --terminal-font-size: 18px;
+  --terminal-font-family: "Courier New", Courier, monospace;
+  --terminal-color: #f5f5f5;
+  --terminal-topbar-color: #d5d5d5;
+  --terminal-input-text-color: #000000;
+  --terminal-prompt-color: #0000ff;
+  --terminal-output-color: #000000;
+}
+
+body.dark {
+  --bg-color: #292929;
+  --main-button-bg-color: rgb(253, 239, 214);
+  --main-header-color: #F2F2F2;
+  --text-color: #E9E9E9;
+  --links-color: #A6A689;
+  --heading-color: #A6A689;
+  --splitter-text: white;
+  --terminal-color: #292d3e;
+  --terminal-topbar-color: #1e212d;
+  --terminal-input-text-color: #fff;
+  --terminal-prompt-color: #5de0e9;
+  --terminal-output-color: #ffffff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "League Spartan", sans-serif;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: var(--bg-color);
+}
+
+::-moz-selection {
+  background: rgb(221, 221, 221);
+}
+
+::selection {
+  background: rgb(221, 221, 221);
+}
+
+.hidden {
+  display: none;
+}
+
+.sectionHeader {
+  font-weight: bold;
+  color: var(--main-header-color);
+  position: relative;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 4rem auto 1rem;
+  font-size: 3rem;
+}
+
+.segregateLine {
+  height: 4px;
+  width: 40px;
+  position: relative;
+  margin: auto;
+  background-color: #D9D9D9;
+}
+
+#header {
+  height: 80vh;
+  background-image: url(../assets/Header.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#header .content {
+  text-align: center;
+  position: relative;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+#header .content h1 {
+  font-size: 4rem;
+}
+#header .content p {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+#header .content button {
+  outline: none;
+  border: 0;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--heading-color);
+  background-color: var(--main-button-bg-color);
+  border-radius: 4px;
+  padding: 1rem 1.6rem;
+  cursor: pointer;
+}
+
+#about {
+  height: -moz-fit-content;
+  height: fit-content;
+}
+#about .content {
+  width: 80%;
+  margin: 3rem auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#about .content section {
+  width: 30%;
+}
+#about .content section .smallHeader {
+  text-align: center;
+  color: var(--heading-color);
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+}
+#about .content section p {
+  font-weight: 400;
+  color: var(--text-color);
+  text-align: center;
+  line-height: 24px;
+  max-width: 400px;
+  margin: auto;
+}
+#about .content section a {
+  font-weight: 400;
+  color: var(--links-color);
+}
+
+#splitter {
+  position: relative;
+  height: 20vh;
+  background-image: url(../assets/Splitter.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: 1rem 0;
+}
+#splitter h1 {
+  color: var(--splitter-text);
+  width: -moz-fit-content;
+  width: fit-content;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2.5rem;
+}
+
+#projects .content {
+  text-align: center;
+  position: relative;
+  padding: 5rem 20rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-gap: 2rem;
+}
+#projects .content .project {
+  text-align: center;
+  padding: 2rem 1rem;
+  transition: 0.3s ease-out;
+  cursor: pointer;
+}
+#projects .content .project h3 {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.6rem;
+  padding-bottom: 1rem;
+  color: var(--heading-color);
+}
+#projects .content .project .img {
+  width: 90%;
+  height: 200px;
+  margin: auto;
+  background-image: url("../assets/orch.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 5px;
+}
+#projects .content .project p {
+  padding-top: 1rem;
+  width: 80%;
+  margin: auto;
+  font-size: 1rem;
+  line-height: 24px;
+  color: var(--text-color);
+}
+#projects .content .project:hover {
+  border-radius: 5px;
+  transform: scale(1.1);
+}
+
+.terminal-icon {
+  width: 50px;
+  height: 50px;
+  background-image: url(../assets/terminal.svg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: fixed;
+  right: 7rem;
+  bottom: 5rem;
+  cursor: pointer;
+}
+
+.terminal-window {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--terminal-color);
+  color: var(--terminal-output-color);
+  font-size: var(--terminal-font-size);
+  font-family: "Courier New", Courier, monospace;
+  width: 500px;
+  height: 300px;
+  border-radius: 5px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
+}
+.terminal-window .terminal-topbar {
+  height: 30px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 10px;
+  background-color: var(--terminal-topbar-color);
+}
+.terminal-window .terminal-topbar .terminal-button {
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  margin-left: 5px;
+  border: 2px solid var(--terminal-output-color);
+  cursor: pointer;
+}
+.terminal-window .terminal-topbar .terminal-button.terminal-close {
+  background-color: #f85c5c;
+}
+.terminal-window .terminal-topbar .terminal-button.terminal-scale {
+  background-color: #fdbc40;
+}
+.terminal-window .terminal-topbar .terminal-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.terminal-window .terminal-content {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+}
+.terminal-window .terminal-content .terminal-line {
+  margin-bottom: 5px;
+}
+.terminal-window .terminal-content .terminal-input {
+  display: flex;
+  align-items: center;
+}
+.terminal-window .terminal-content .terminal-input .terminal-prompt {
+  color: var(--terminal-prompt-color);
+  margin-right: 5px;
+}
+.terminal-window .terminal-content .terminal-input .terminal-textbox {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: var(--terminal-input-text-color);
+  font-size: var(--terminal-font-size);
+  flex: 1;
+}
+
+@media only screen and (max-width: 1700px) {
+  #projects .content {
+    padding: 5rem 10rem;
+  }
+}
+@media only screen and (max-width: 1000px) {
+  #projects .content {
+    padding: 5rem 5rem;
+  }
+}/*# sourceMappingURL=styles.css.map */

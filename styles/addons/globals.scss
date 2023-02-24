@@ -1,0 +1,41 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'League Spartan', sans-serif;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: var(--bg-color);
+}
+
+::-moz-selection {
+  background: rgb(221, 221, 221);
+}
+
+::selection {
+  background: rgb(221, 221, 221);
+}
+
+.hidden {
+  display: none;
+}
+
+
+.sectionHeader {
+  font-weight: bold;
+  color: var(--main-header-color);
+  position: relative;
+  width: fit-content;
+  margin: 4rem auto 1rem;
+  font-size: 3rem;
+}
+
+.segregateLine {
+  height: 4px;
+  width: 40px;
+  position: relative;
+  margin: auto;
+  background-color: #D9D9D9;
+}
