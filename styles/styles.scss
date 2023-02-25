@@ -1,12 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=League+Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 @import "./addons/vars.scss";
-@import "./addons/globals.scss";
-
 
 #header {
   height: 80vh;
-  background-image: url(../assets/Header.png);
+
+  background: linear-gradient(rgba(0, 0, 0, 0.233), rgba(0, 0, 0, 0.233)), url(../assets/Header.png);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -36,7 +35,7 @@
       text-transform: uppercase;
       font-weight: 600;
       font-size: .9rem;
-      color: var(--heading-color);
+      color: var(--main-button-text-color);
       background-color: var(--main-button-bg-color);
       border-radius: 4px;
       padding: 1rem 1.6rem;
@@ -169,7 +168,7 @@
 }
 
 .terminal-window {
-  position: absolute;
+  position: fixed;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -183,6 +182,10 @@
   border-radius: 5px;
   // overflow: hidden;
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
 
   .terminal-topbar {
     height: 30px;
@@ -218,18 +221,41 @@
     flex: 1;
     padding: 10px;
     overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--terminal-topbar-color) var(--terminal-color);
+
+    &::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--terminal-topbar-color);
+      border-radius: 3px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: var(--terminal-color);
+      border-radius: 3px;
+    }
+
+
 
     .terminal-line {
       margin-bottom: 5px;
     }
 
+    .terminal-colored {
+      color: var(--terminal-prompt-color);
+    }
+
     .terminal-input {
       display: flex;
       align-items: center;
+      color: var(--terminal-prompt-color);
 
       .terminal-prompt {
-        color: var(--terminal-prompt-color);
-        margin-right: 5px;
+        margin: 0 5px;
       }
 
       .terminal-textbox {
@@ -244,4 +270,5 @@
   }
 }
 
+@import "./addons/globals.scss";
 @import "./addons/mediaqueries.scss";

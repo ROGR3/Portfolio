@@ -1,6 +1,7 @@
 :root {
   --bg-color: white;
 
+  --main-button-text-color: #1B1B1B;
   --main-button-bg-color: rgb(253, 239, 214);
   --main-header-color: #949482;
   --text-color: #5E5E5E;
@@ -22,6 +23,7 @@
 body.dark {
   --bg-color: #292929;
 
+  --main-button-text-color: #000;
   --main-button-bg-color: rgb(253, 239, 214);
   --main-header-color: #F2F2F2;
   --text-color: #E9E9E9;

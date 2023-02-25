@@ -6,10 +6,57 @@
   }
 }
 
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 1450px) {
   #projects {
     .content {
-      padding: 5rem 5rem;
+      padding: 5rem 7rem;
+      grid-gap: .3rem;
+    }
+  }
+}
+
+
+@media only screen and (max-width: 1300px) {
+  #projects {
+    .content {
+      padding: 5rem 3rem;
+    }
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  #about {
+    .content {
+      flex-direction: column;
+
+      section {
+        width: 60%;
+        margin: 3rem 0;
+      }
+    }
+  }
+
+  #projects {
+    .content {
+      padding: 5rem 2rem;
+    }
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  #about {
+    .content {
+      section {
+        width: 90%;
+        margin: 2rem 0;
+      }
+    }
+  }
+
+  #projects {
+    .content {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      padding: 5rem .5rem;
     }
   }
 }

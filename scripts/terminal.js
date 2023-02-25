@@ -1,19 +1,29 @@
+import { processCommand, getCurrentPath, clearConsole, switchThemes } from "./lib/processCommands.js"
 const terminalWindow = document.querySelector(".terminal-window")
 const terminalTop = document.querySelector(".terminal-topbar")
-const terminalClose = document.querySelector(".terminal-close")
+const terminalMinimize = document.querySelector(".terminal-minimize")
 const terminalScale = document.querySelector(".terminal-scale")
+const terminalClose = document.querySelector(".terminal-close")
 const terminalIcon = document.querySelector(".terminal-icon")
-
+const terminalContent = document.querySelector('.terminal-content');
+const terminalInput = document.querySelector('.terminal-textbox');
+const terminalCurrentPath = document.querySelector('.terminal-current-path');
 
 let pos1 = 0
 let pos2 = 0
 let pos3 = 0
 let pos4 = 0
 
+let lastCommands = []
+let selectedCommandID = -1
+
+terminalWindow.onclick = focusInput
 terminalTop.onmousedown = dragMouseDown;
 terminalScale.onclick = scaleTerminal;
-terminalClose.onclick = showTerminal;
+terminalMinimize.onclick = showTerminal;
+terminalClose.onclick = () => { showTerminal(); clearConsole(terminalContent) };
 terminalIcon.onclick = showTerminal;
+terminalInput.onkeydown = handleInput;
 
 function dragMouseDown(e) {
   e = e || window.event;
@@ -55,18 +65,30 @@ function scaleTerminal() {
   }
 }
 
-const terminalContent = document.querySelector('.terminal-content');
-const terminalInput = document.querySelector('.terminal-textbox');
 
-function processCommand(input) {
-  const output = `Doing: ${input}\n`;
-  return output;
-}
+
 
 function createLine(output) {
+  if (typeof output == "string") output = [output]
+  for (let i in output) {
+    const line = document.createElement('div');
+    line.classList.add('terminal-line');
+    line.innerText = output[i];
+    terminalContent.insertBefore(line, terminalInput.parentNode);
+    terminalContent.scrollTo(0, terminalContent.scrollHeight)
+  }
+}
+
+function createOldInput(input) {
   const line = document.createElement('div');
-  line.className = 'terminal-line';
-  line.textContent = output;
+  line.classList.add('terminal-line');
+  const colored = document.createElement('span')
+  colored.classList.add("terminal-colored")
+  colored.innerText = `https://atzuki.netlify.app/${getCurrentPath()} λ `
+  const inp = document.createElement('span')
+  inp.innerText = input
+  line.appendChild(colored)
+  line.appendChild(inp)
   terminalContent.insertBefore(line, terminalInput.parentNode);
 }
 
@@ -74,18 +96,35 @@ function handleInput(e) {
   if (e.key === 'Enter') {
     e.preventDefault();
     const input = terminalInput.value;
+    lastCommands.unshift(input)
+    selectedCommandID = -1
     terminalInput.value = '';
-    createLine(`$ ${input}`);
-    const output = processCommand(input);
+    createOldInput(input);
+    const output = processCommand(input, terminalContent);
     createLine(output);
+    terminalCurrentPath.innerText = getCurrentPath()
+  } else if (e.key === "ArrowUp") {
+    if (selectedCommandID < lastCommands.length - 1)
+      selectedCommandID++
+    terminalInput.value = lastCommands[selectedCommandID]
+  } else if (e.key === "ArrowDown") {
+    if (selectedCommandID > 0)
+      selectedCommandID--
+    terminalInput.value = lastCommands[selectedCommandID]
   }
 }
 
-terminalWindow.addEventListener('click', (e) => {
+function focusInput(e) {
   if (!e.target.classList.contains("terminal-topbar"))
-    terminalInput.focus();
-});
+    if (terminalWindow.scrollTop >= (terminalWindow.scrollHeight - terminalWindow.clientHeight))
+      terminalInput.focus();
+}
 
-terminalInput.addEventListener('keydown', handleInput);
 
 
+function handleLoadTheme() {
+  let isDarkTheme = localStorage.getItem("darkTheme") || "false"
+  switchThemes(JSON.parse(isDarkTheme))
+}
+
+window.onload = handleLoadTheme
