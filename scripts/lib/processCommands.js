@@ -16,16 +16,11 @@ function processCommand(input, terminalContent) {
       output = Object.keys(currentFolder)
       break;
     case "cd":
-      if (arg == "..") {
-        currentPath.pop()
-        currentFolder = getCurrentFolder(currentPath)
-      } else if (currentFolder[arg]) {
-        currentPath.push(arg)
-        currentFolder = currentFolder[arg]
-      } else {
-        output = "The directory name is invalid."
-      }
+      output = changeDir(arg)
       break;
+    case "..":
+      output = changeDir("..")
+      break
     case "clear":
     case "cls":
       clearConsole(terminalContent)
@@ -34,8 +29,7 @@ function processCommand(input, terminalContent) {
       if (flags[0] == "-dark" || flags[0] == "-d") {
         switchThemes(true)
         localStorage.setItem("darkTheme", JSON.stringify(true))
-      }
-      else if (flags[0] == "-light" || flags[0] == "-l") {
+      } else if (flags[0] == "-light" || flags[0] == "-l") {
         switchThemes(false)
         localStorage.setItem("darkTheme", JSON.stringify(false))
       } else {
@@ -51,6 +45,18 @@ function processCommand(input, terminalContent) {
 
   }
   return output
+}
+
+function changeDir(dir){
+  if (dir == "..") {
+    currentPath.pop()
+    currentFolder = getCurrentFolder(currentPath)
+  } else if (currentFolder[dir] && !currentFolder[dir].size) {
+    currentPath.push(dir)
+    currentFolder = currentFolder[dir]
+  } else {
+   return "The directory name is invalid."
+  }
 }
 
 function joinPath(_arr) {
@@ -81,10 +87,14 @@ function removeChildren(parent) {
 function switchThemes(isDark) {
   document.body.classList.remove("light")
   document.body.classList.remove("dark")
-  if (isDark)
+  if (isDark){
+    document.querySelector(".terminal-icon").style.backgroundImage = "url(../assets/terminal-white.svg)"
     document.body.classList.add("dark")
-  else
-    document.body.classList.add("light")
+  }
+  else{
+    document.querySelector(".terminal-icon").style.backgroundImage = "url(../assets/terminal.svg)"
+    document.body.classList.add("light")  
+  }
 }
 
 

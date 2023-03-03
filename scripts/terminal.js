@@ -75,7 +75,7 @@ function createLine(output) {
     line.classList.add('terminal-line');
     line.innerText = output[i];
     terminalContent.insertBefore(line, terminalInput.parentNode);
-    terminalContent.scrollTo(0, terminalContent.scrollHeight)
+    terminalContent.scrollTo({top:terminalContent.scrollHeight, behavior: 'smooth' })
   }
 }
 
@@ -116,9 +116,11 @@ function handleInput(e) {
 
 function focusInput(e) {
   if (!e.target.classList.contains("terminal-topbar"))
-    if (terminalWindow.scrollTop >= (terminalWindow.scrollHeight - terminalWindow.clientHeight))
+    if (terminalWindow.scrollTop >= (terminalWindow.scrollHeight - terminalWindow.clientHeight)){
       terminalInput.focus();
+    }
 }
+
 
 
 

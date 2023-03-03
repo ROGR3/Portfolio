@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=League+Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 @import "./addons/vars.scss";
+@import "./addons/animations.scss";
 
 #header {
   height: 80vh;
@@ -85,20 +86,22 @@
 
 #splitter {
   position: relative;
-  height: 20vh;
-  background-image: url(../assets/Splitter.png);
+  height: fit-content;
+  background: linear-gradient(rgba(0, 0, 0, 0.233), rgba(0, 0, 0, 0.233)),  url(../assets/Splitter.png);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   margin: 1rem 0;
-
+  padding: 4rem;
+  text-align: center;
+  overflow-y: hidden;
   h1 {
     color: var(--splitter-text);
     width: fit-content;
     position: relative;
-    top: 50%;
+      text-align: center;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translateX( -50%);
     font-size: 2.5rem;
   }
 }
@@ -155,7 +158,7 @@
 }
 
 .terminal-icon {
-  width: 50px;
+    width: 50px;
   height: 50px;
   background-image: url(../assets/terminal.svg);
   background-position: center;

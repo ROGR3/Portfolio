@@ -33,6 +33,32 @@ body.dark {
   --terminal-output-color: #ffffff;
 }
 
+@keyframes zoomOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+}
+.zoomOut {
+  animation: zoomOut forwards 0.9s;
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.zoomIn {
+  animation: zoomIn forwards 0.9s;
+}
+
 #header {
   height: 80vh;
   background: linear-gradient(rgba(0, 0, 0, 0.233), rgba(0, 0, 0, 0.233)), url(../assets/Header.png);
@@ -104,21 +130,25 @@ body.dark {
 
 #splitter {
   position: relative;
-  height: 20vh;
-  background-image: url(../assets/Splitter.png);
+  height: -moz-fit-content;
+  height: fit-content;
+  background: linear-gradient(rgba(0, 0, 0, 0.233), rgba(0, 0, 0, 0.233)), url(../assets/Splitter.png);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   margin: 1rem 0;
+  padding: 4rem;
+  text-align: center;
+  overflow-y: hidden;
 }
 #splitter h1 {
   color: var(--splitter-text);
   width: -moz-fit-content;
   width: fit-content;
   position: relative;
-  top: 50%;
+  text-align: center;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
   font-size: 2.5rem;
 }
 
