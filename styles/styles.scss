@@ -1,7 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=League+Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fragment+Mono:ital@0;1&display=swap');
 
 @import "./addons/vars.scss";
 @import "./addons/animations.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
 
 #header {
   height: 80vh;
@@ -10,6 +19,7 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  font-family: 'League Spartan', sans-serif;
 
   .content {
     text-align: center;
@@ -49,6 +59,7 @@
 
 #about {
   height: fit-content;
+  font-family: 'League Spartan', sans-serif;
 
   .content {
     width: 80%;
@@ -87,7 +98,7 @@
 #splitter {
   position: relative;
   height: fit-content;
-  background: linear-gradient(rgba(0, 0, 0, 0.233), rgba(0, 0, 0, 0.233)),  url(../assets/Splitter.png);
+  background: linear-gradient(rgba(0, 0, 0, 0.233), rgba(0, 0, 0, 0.233)), url(../assets/Splitter.png);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -95,18 +106,22 @@
   padding: 4rem;
   text-align: center;
   overflow-y: hidden;
+  font-family: 'League Spartan', sans-serif;
+
   h1 {
     color: var(--splitter-text);
     width: fit-content;
     position: relative;
-      text-align: center;
+    text-align: center;
     left: 50%;
-    transform: translateX( -50%);
+    transform: translateX(-50%);
     font-size: 2.5rem;
   }
 }
 
 #projects {
+  font-family: 'League Spartan', sans-serif;
+
   .content {
     text-align: center;
     position: relative;
@@ -158,7 +173,7 @@
 }
 
 .terminal-icon {
-    width: 50px;
+  width: 50px;
   height: 50px;
   background-image: url(../assets/terminal.svg);
   background-position: center;
@@ -178,12 +193,11 @@
 
   background-color: var(--terminal-color);
   color: var(--terminal-output-color);
-  font-size: var(--terminal-font-size);
-  font-family: 'Courier New', Courier, monospace;
+  font-family: 'Fragment Mono', monospace !important;
+  font-size: 14px;
   width: 500px;
   height: 300px;
   border-radius: 5px;
-  // overflow: hidden;
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
@@ -266,10 +280,24 @@
         border: none;
         outline: none;
         color: var(--terminal-input-text-color);
-        font-size: var(--terminal-font-size);
+        font-size: 14px;
+        font-family: 'Fragment Mono', monospace !important;
         flex: 1;
       }
     }
+  }
+
+  .resize-handle {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    cursor: nwse-resize;
+    border-right: 3px solid var(--text-color);
+    border-bottom: 3px solid var(--text-color);
+    border-top: none;
+    border-left: none;
   }
 }
 

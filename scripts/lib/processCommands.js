@@ -1,8 +1,13 @@
 import { VIRTUAL_FS } from "./virtualfs.js";
+import { newQuote } from "./quotes.js";
+
+const GITHUB_LINK = "https://github.com/Borecjeborec1/Portfolio"
 
 let currentPath = []
 let currentFolder = VIRTUAL_FS
 
+let quoteText = document.getElementById("randomQuote")
+newQuote(quoteText)
 
 function processCommand(input, terminalContent) {
   let output = ""
@@ -36,9 +41,37 @@ function processCommand(input, terminalContent) {
         output = "Unknown flag"
       }
       break;
+    case "newquote":
+      newQuote(quoteText)
+      break;
+    case "sudo":
+      output = "You do not need sudo permissions, you are the owner of the world!"
+      break;
+    case "mv":
+    case "mkdir":
+    case "touch":
+    case "rm":
+    case "cp":
+      output = ["You can not modify the website structure. Yet!", `But.. you can implement it!`, `${GITHUB_LINK}/pulls`]
+      break;
     case "reload":
       window.location.reload()
       break;
+    case "help":
+      output = [
+        "Some of the available commands:",
+        "",
+        { name: "cd <directory>", description: "Change the current directory to the specified one." },
+        { name: "ls", description: "List files and folders in the current directory." },
+        { name: "clear", description: "Clear the console window." },
+        { name: "theme", description: "Switch themes." },
+        { name: "newquote", description: "Generate a new random quote." },
+        { name: "reload", description: "Reload the page." },
+        "",
+        "Type 'help <command>' for more information on a specific command."
+      ];
+      break;
+
     default:
       output = "Uknown command: " + command
       break;
@@ -47,7 +80,7 @@ function processCommand(input, terminalContent) {
   return output
 }
 
-function changeDir(dir){
+function changeDir(dir) {
   if (dir == "..") {
     currentPath.pop()
     currentFolder = getCurrentFolder(currentPath)
@@ -55,7 +88,7 @@ function changeDir(dir){
     currentPath.push(dir)
     currentFolder = currentFolder[dir]
   } else {
-   return "The directory name is invalid."
+    return "The directory name is invalid."
   }
 }
 
@@ -87,13 +120,13 @@ function removeChildren(parent) {
 function switchThemes(isDark) {
   document.body.classList.remove("light")
   document.body.classList.remove("dark")
-  if (isDark){
+  if (isDark) {
     document.querySelector(".terminal-icon").style.backgroundImage = "url(../assets/terminal-white.svg)"
     document.body.classList.add("dark")
   }
-  else{
+  else {
     document.querySelector(".terminal-icon").style.backgroundImage = "url(../assets/terminal.svg)"
-    document.body.classList.add("light")  
+    document.body.classList.add("light")
   }
 }
 

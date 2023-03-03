@@ -4,10 +4,11 @@ const terminalTop = document.querySelector(".terminal-topbar")
 const terminalMinimize = document.querySelector(".terminal-minimize")
 const terminalScale = document.querySelector(".terminal-scale")
 const terminalClose = document.querySelector(".terminal-close")
-const terminalIcon = document.querySelector(".terminal-icon")
 const terminalContent = document.querySelector('.terminal-content');
 const terminalInput = document.querySelector('.terminal-textbox');
 const terminalCurrentPath = document.querySelector('.terminal-current-path');
+const terminalIcon = document.querySelector(".terminal-icon")
+
 
 let pos1 = 0
 let pos2 = 0
@@ -69,13 +70,19 @@ function scaleTerminal() {
 
 
 function createLine(output) {
+  const alignWidth = 10;
   if (typeof output == "string") output = [output]
   for (let i in output) {
     const line = document.createElement('div');
     line.classList.add('terminal-line');
-    line.innerText = output[i];
+    if (output[i].name) {
+      const indentStr = '\u00A0'.repeat(25 - output[i].name.length);
+      line.textContent = `${output[i].name}${indentStr} - ${output[i].description}`;
+    } else {
+      line.innerText = output[i];
+    }
     terminalContent.insertBefore(line, terminalInput.parentNode);
-    terminalContent.scrollTo({top:terminalContent.scrollHeight, behavior: 'smooth' })
+    terminalContent.scrollTo({ top: terminalContent.scrollHeight, behavior: 'smooth' })
   }
 }
 
@@ -87,6 +94,7 @@ function createOldInput(input) {
   colored.innerText = `https://atzuki.netlify.app/${getCurrentPath()} λ `
   const inp = document.createElement('span')
   inp.innerText = input
+  terminalContent.insertBefore(line, terminalInput.parentNode);
   line.appendChild(colored)
   line.appendChild(inp)
   terminalContent.insertBefore(line, terminalInput.parentNode);
@@ -116,12 +124,22 @@ function handleInput(e) {
 
 function focusInput(e) {
   if (!e.target.classList.contains("terminal-topbar"))
-    if (terminalWindow.scrollTop >= (terminalWindow.scrollHeight - terminalWindow.clientHeight)){
+    if (window.getSelection().toString().length == 0)
       terminalInput.focus();
-    }
 }
 
 
+
+
+window.onscroll = () => {
+  if (window.pageYOffset > 700) {
+    terminalIcon.classList.add("zoomIn")
+    terminalIcon.classList.remove("zoomOut")
+  } else {
+    terminalIcon.classList.add("zoomOut")
+    terminalIcon.classList.remove("zoomIn")
+  }
+}
 
 
 function handleLoadTheme() {

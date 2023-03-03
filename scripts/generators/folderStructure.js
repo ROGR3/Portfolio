@@ -26,9 +26,4 @@ function readDirRecursive(dir) {
   return files;
 }
 
-function filterObject(obj, callback) {
-  return Object.fromEntries(Object.entries(obj).
-    filter(([key, val]) => callback(val, key)));
-}
-
 fs.writeFileSync("./scripts/lib/virtualfs.js", "const VIRTUAL_FS = " + JSON.stringify(readDirRecursive('.')))
