@@ -191,11 +191,28 @@ body.dark {
   width: 90%;
   height: 200px;
   margin: auto;
-  background-image: url("../assets/orch.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: 5px;
+}
+#projects .content .project .orchidei-img {
+  background-image: url("../assets/orch.png");
+}
+#projects .content .project .cassandra-img {
+  background-image: url("../assets/orch.png");
+}
+#projects .content .project .leaguestop-img {
+  background-image: url("../assets/leaguestop.png");
+}
+#projects .content .project .npm-img {
+  background-image: url("../assets/lepikjs.png");
+}
+#projects .content .project .pobu-img {
+  background-image: url("https://github.com/Borecjeborec1/Pobu/blob/main/examples/league-of-legends/Animation.gif?raw=true");
+}
+#projects .content .project .dc-img {
+  background-image: url("../assets/discordbot.png");
 }
 #projects .content .project p {
   padding-top: 1rem;
@@ -271,6 +288,7 @@ body.dark {
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: var(--terminal-topbar-color) var(--terminal-color);
+  will-change: transform;
 }
 .terminal-window .terminal-content::-webkit-scrollbar {
   width: 6px;
@@ -289,11 +307,13 @@ body.dark {
 }
 .terminal-window .terminal-content .terminal-colored {
   color: var(--terminal-prompt-color);
+  font-weight: bold;
 }
 .terminal-window .terminal-content .terminal-input {
   display: flex;
   align-items: center;
   color: var(--terminal-prompt-color);
+  font-weight: bold;
 }
 .terminal-window .terminal-content .terminal-input .terminal-prompt {
   margin: 0 5px;

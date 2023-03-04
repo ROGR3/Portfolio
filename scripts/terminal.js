@@ -98,6 +98,7 @@ function createOldInput(input) {
   line.appendChild(colored)
   line.appendChild(inp)
   terminalContent.insertBefore(line, terminalInput.parentNode);
+  terminalContent.scrollTo({ top: terminalContent.scrollHeight, behavior: 'smooth' })
 }
 
 function handleInput(e) {
