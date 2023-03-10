@@ -14,7 +14,7 @@ function readDirRecursive(dir) {
     }
     else if (entry.isFile()) {
       let stats = fs.statSync(entryPath)
-      files[entry.name] = {
+      files[entry.name+"/"] = {
         properties: {
           size: stats.size,
           isFile: true
