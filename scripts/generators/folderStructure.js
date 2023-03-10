@@ -10,11 +10,11 @@ function readDirRecursive(dir) {
     const entryPath = path.join(dir, entry.name);
 
     if (entry.isDirectory() && entry.name != ".git") {
-      files[entry.name] = readDirRecursive(entryPath);
+      files[entry.name+"/"] = readDirRecursive(entryPath);
     }
     else if (entry.isFile()) {
       let stats = fs.statSync(entryPath)
-      files[entry.name+"/"] = {
+      files[entry.name] = {
         properties: {
           size: stats.size,
           isFile: true
@@ -26,4 +26,4 @@ function readDirRecursive(dir) {
   return files;
 }
 
-fs.writeFileSync("./scripts/lib/virtualfs.js", "const VIRTUAL_FS = " + JSON.stringify(readDirRecursive('.')))
+fs.writeFileSync("./scripts/lib/virtualfs.js", "export const VIRTUAL_FS = " + JSON.stringify(readDirRecursive('.')))
