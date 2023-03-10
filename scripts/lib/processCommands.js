@@ -1,5 +1,7 @@
 import { VIRTUAL_FS } from "./virtualfs.js";
 import { newQuote } from "./quotes.js";
+import {LANGUAGE_MESSAGES} from "./languageTexts.js"
+import {handleLanguage} from "./languages.js"
 
 const GITHUB_LINK = "https://github.com/Borecjeborec1/Portfolio"
 
@@ -72,6 +74,16 @@ function processCommand(input, terminalContent) {
     case "cp":
       output = ["You can not modify the website structure. Yet!", `But.. you can implement it!`, `${GITHUB_LINK}/pulls`]
       break;
+    case "lang":
+    case "language":
+      let langName = flags[0].replace("-","")
+      if(LANGUAGE_MESSAGES["langChanged"][langName]){
+        handleLanguage(langName)
+        output = LANGUAGE_MESSAGES["langChanged"][langName]
+      }else{
+        output = "Language not supported"
+      }
+      break;
     case "reload":
       window.location.reload()
       break;
@@ -83,7 +95,6 @@ function processCommand(input, terminalContent) {
       else
         displayHelpForCmd(arg)
       break;
-
     default:
       output = "Uknown command: " + command
       break;
