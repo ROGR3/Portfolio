@@ -29,7 +29,7 @@ export const LANGUAGE_TEXT = {
   },
   skilyP:{
     en:"With Javascript as my first and primary language I can code nearly everything. But things can be done easier and more efficient sometimes. For that reason I learned Python, Godot, C++ and MS Office. I’m still open to learn new technology. ",
-    cs:"Mé dovednosti"
+    cs:"Javascript je můj první a primární jazyk, a tak mohu programovat téměř vše. Ale někdy se dají věci udělat jednodušeji a efektivněji. Proto jsem se naučil Python, Godot, C++ a MS Office. Stále jsem otevřený učení se novým technologiím."
   },
   zajmyP:{
     en:"In my free time, I enjoy cooking, trying out new recipes and experimenting with different cuisines. I also love being outdoors and going on hikes, especially in nature reserves and national parks. Learning anything new is another passion of mine.",
@@ -53,7 +53,7 @@ export const LANGUAGE_TEXT = {
   },
   npmP:{
     en:"As NodeJS is my primary using technology, I developed a lot of npm packages. Containing LepikJS, LepikEvents, Kohut, KotasJS, Atzuki-Dollar and so much more!",
-    cs:"Projekty"
+    cs:"Protože NodeJS je moje primární technologie, vytvořil jsem spoustu balíčků npm. Obsahují LepikJS, LepikEvents, Kohut, KotasJS, Atzuki-Dollar a mnoho dalších!"
   },
   pobuP:{
     en:"Pobu is a programming language for creating scripts and simulating user-like events. It is using C++ in its core as an addon for NodeJS.",
