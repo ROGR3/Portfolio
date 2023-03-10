@@ -179,6 +179,8 @@ body.dark {
   padding: 2rem 1rem;
   transition: 0.3s ease-out;
   cursor: pointer;
+  text-decoration: none;
+  color: initial;
 }
 #projects .content .project h3 {
   font-style: normal;

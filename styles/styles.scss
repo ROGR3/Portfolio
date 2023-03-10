@@ -135,6 +135,8 @@
       padding: 2rem 1rem;
       transition: .3s ease-out;
       cursor: pointer;
+      text-decoration: none;
+      color: initial;
 
       h3 {
         font-style: normal;
@@ -152,6 +154,7 @@
         background-repeat: no-repeat;
         background-size: cover;
         border-radius: 5px;
+
       }
 
       .orchidei-img {

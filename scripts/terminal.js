@@ -70,13 +70,13 @@ function scaleTerminal() {
 
 
 function createLine(output) {
-  const alignWidth = 10;
+  const alignWidth = 25;
   if (typeof output == "string") output = [output]
   for (let i in output) {
     const line = document.createElement('div');
     line.classList.add('terminal-line');
     if (output[i].name) {
-      const indentStr = '\u00A0'.repeat(25 - output[i].name.length);
+      const indentStr = '\u00A0'.repeat(alignWidth - output[i].name.length);
       line.textContent = `${output[i].name}${indentStr} - ${output[i].description}`;
     } else {
       line.innerText = output[i];
@@ -125,8 +125,12 @@ function handleInput(e) {
 
 function focusInput(e) {
   if (!e.target.classList.contains("terminal-topbar"))
-    if (window.getSelection().toString().length == 0)
-      terminalInput.focus();
+    if (window.getSelection().toString().length == 0) {
+      terminalInput.scrollIntoView({ behavior: "smooth" });
+      requestAnimationFrame(() => {
+        terminalInput.focus();
+      });
+    }
 }
 
 
@@ -144,7 +148,12 @@ window.onscroll = () => {
 
 
 function handleLoadTheme() {
-  let isDarkTheme = localStorage.getItem("darkTheme") || "false"
+  let defaultTheme = undefined
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+    defaultTheme = event.matches ? "dark" : "light";
+  });
+  let isDarkTheme = defaultTheme || localStorage.getItem("darkTheme") || "true"
+
   switchThemes(JSON.parse(isDarkTheme))
 }
 

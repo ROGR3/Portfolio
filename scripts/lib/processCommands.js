@@ -3,6 +3,24 @@ import { newQuote } from "./quotes.js";
 
 const GITHUB_LINK = "https://github.com/Borecjeborec1/Portfolio"
 
+const briefHelp = [
+  "Some of the available commands:",
+  "",
+  { name: "cd <directory>", description: "Change the current directory to the specified one." },
+  { name: "ls", description: "List files and folders in the current directory." },
+  { name: "clear", description: "Clear the console window." },
+  { name: "theme", description: "Switch themes." },
+  { name: "newquote", description: "Generate a new random quote." },
+  { name: "reload", description: "Reload the page." },
+  { name: "lang <lang>", description: "Change the language" },
+  { name: "about <project>", description: "Detailed info about certain project" },
+  { name: "resume", description: "Display the resumé" },
+  { name: "contact", description: "Contact me!" },
+  { name: "todo", description: "Show the todo plan of this page!" },
+  "",
+  "Good luck finding others!"
+]
+
 let currentPath = []
 let currentFolder = VIRTUAL_FS
 
@@ -57,19 +75,13 @@ function processCommand(input, terminalContent) {
     case "reload":
       window.location.reload()
       break;
+    case "":
+      break;
     case "help":
-      output = [
-        "Some of the available commands:",
-        "",
-        { name: "cd <directory>", description: "Change the current directory to the specified one." },
-        { name: "ls", description: "List files and folders in the current directory." },
-        { name: "clear", description: "Clear the console window." },
-        { name: "theme", description: "Switch themes." },
-        { name: "newquote", description: "Generate a new random quote." },
-        { name: "reload", description: "Reload the page." },
-        "",
-        "Type 'help <command>' for more information on a specific command."
-      ];
+      if (!arg)
+        output = briefHelp
+      else
+        displayHelpForCmd(arg)
       break;
 
     default:
@@ -128,6 +140,10 @@ function switchThemes(isDark) {
     document.querySelector(".terminal-icon").style.backgroundImage = "url(../assets/terminal.svg)"
     document.body.classList.add("light")
   }
+}
+
+function displayHelpForCmd(cmd) {
+  console.log(cmd)
 }
 
 
