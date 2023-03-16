@@ -1,9 +1,9 @@
 import { VIRTUAL_FS } from "./virtualfs.js";
+import { TODO } from "./todo.js";
 import { newQuote } from "./quotes.js";
 import { LANGUAGE_MESSAGES } from "./languageTexts.js"
 import { handleLanguage } from "./languages.js"
-
-const GITHUB_LINK = "https://github.com/Borecjeborec1/Portfolio"
+import { EMAIL, GITHUB } from "./contact.js"
 
 const briefHelp = [
   "Some of the available commands:",
@@ -73,7 +73,7 @@ function processCommand(input, terminalContent) {
     case "touch":
     case "rm":
     case "cp":
-      output = ["You can not modify the website structure. Yet!", `But.. you can implement it!`, `${GITHUB_LINK}/pulls`]
+      output = ["You can not modify the website structure. Yet!", `But.. you can implement it!`, `${GITHUB}/Portfolio/pulls`]
       break;
     case "lang":
     case "language":
@@ -85,6 +85,24 @@ function processCommand(input, terminalContent) {
         output = "Language not supported"
       }
       break;
+    case "email":
+      output = EMAIL
+      break;
+    case "github":
+    case "gh":
+      output = GITHUB
+      break;
+    case "contact":
+      if (!arg)
+        output = ["Fell free to contact me via email or GitHub.", "Or contact me directly from here!", "For direct message use: ", "contant  <your-email> <message>"]
+      else if (arg == "email") {
+        output = "Email send successfully!"
+      }
+      output
+      break;
+    case "todo":
+      output = TODO
+      break
     case "reload":
       window.location.reload()
       break;
@@ -151,13 +169,15 @@ function switchThemes(isDark) {
     document.querySelector(".terminal-icon").style.backgroundImage = "url(../assets/terminal-white.svg)"
     document.body.classList.add("dark")
     for (let i in images)
-      images[i].style.backgroundImage = window.getComputedStyle(images[i])["background-image"].replace("light", "dark")
+      if (typeof images[i] == "object")
+        images[i].style.backgroundImage = window.getComputedStyle(images[i])["background-image"].replace("light", "dark")
   }
   else {
     document.querySelector(".terminal-icon").style.backgroundImage = "url(../assets/terminal.svg)"
     document.body.classList.add("light")
     for (let i in images)
-      images[i].style.backgroundImage = window.getComputedStyle(images[i])["background-image"].replace("dark", "light")
+      if (typeof images[i] == "object")
+        images[i].style.backgroundImage = window.getComputedStyle(images[i])["background-image"].replace("dark", "light")
   }
 }
 
