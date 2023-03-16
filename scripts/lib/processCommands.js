@@ -1,7 +1,7 @@
 import { VIRTUAL_FS } from "./virtualfs.js";
 import { newQuote } from "./quotes.js";
-import {LANGUAGE_MESSAGES} from "./languageTexts.js"
-import {handleLanguage} from "./languages.js"
+import { LANGUAGE_MESSAGES } from "./languageTexts.js"
+import { handleLanguage } from "./languages.js"
 
 const GITHUB_LINK = "https://github.com/Borecjeborec1/Portfolio"
 
@@ -44,6 +44,7 @@ function processCommand(input, terminalContent) {
       output = changeDir(arg)
       break;
     case "..":
+    case "../":
       output = changeDir("..")
       break
     case "clear":
@@ -76,11 +77,11 @@ function processCommand(input, terminalContent) {
       break;
     case "lang":
     case "language":
-      let langName = flags[0].replace("-","")
-      if(LANGUAGE_MESSAGES["langChanged"][langName]){
+      let langName = flags[0].replace("-", "")
+      if (LANGUAGE_MESSAGES["langChanged"][langName]) {
         handleLanguage(langName)
         output = LANGUAGE_MESSAGES["langChanged"][langName]
-      }else{
+      } else {
         output = "Language not supported"
       }
       break;
@@ -104,7 +105,8 @@ function processCommand(input, terminalContent) {
 }
 
 function changeDir(dir) {
-  if (dir == "..") {
+  dir = dir.endsWith("/") ? dir : dir + "/"
+  if (dir == "../") {
     currentPath.pop()
     currentFolder = getCurrentFolder(currentPath)
   } else if (currentFolder[dir] && !currentFolder[dir].size) {
@@ -143,13 +145,19 @@ function removeChildren(parent) {
 function switchThemes(isDark) {
   document.body.classList.remove("light")
   document.body.classList.remove("dark")
+  let images = document.getElementById("projects").querySelectorAll(".img")
+  console.log(images)
   if (isDark) {
     document.querySelector(".terminal-icon").style.backgroundImage = "url(../assets/terminal-white.svg)"
     document.body.classList.add("dark")
+    for (let i in images)
+      images[i].style.backgroundImage = window.getComputedStyle(images[i])["background-image"].replace("light", "dark")
   }
   else {
     document.querySelector(".terminal-icon").style.backgroundImage = "url(../assets/terminal.svg)"
     document.body.classList.add("light")
+    for (let i in images)
+      images[i].style.backgroundImage = window.getComputedStyle(images[i])["background-image"].replace("dark", "light")
   }
 }
 
