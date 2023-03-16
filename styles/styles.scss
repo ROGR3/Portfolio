@@ -290,14 +290,14 @@
     }
 
     .terminal-colored {
-      color: var(--terminal-prompt-color);
+      color: var(--heading-color);
       font-weight: bold;
     }
 
     .terminal-input {
       display: flex;
       align-items: center;
-      color: var(--terminal-prompt-color);
+      color: var(--heading-color);
       font-weight: bold;
 
       .terminal-prompt {

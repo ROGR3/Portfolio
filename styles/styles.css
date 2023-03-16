@@ -308,13 +308,13 @@ body.dark {
   margin-bottom: 5px;
 }
 .terminal-window .terminal-content .terminal-colored {
-  color: var(--terminal-prompt-color);
+  color: var(--heading-color);
   font-weight: bold;
 }
 .terminal-window .terminal-content .terminal-input {
   display: flex;
   align-items: center;
-  color: var(--terminal-prompt-color);
+  color: var(--heading-color);
   font-weight: bold;
 }
 .terminal-window .terminal-content .terminal-input .terminal-prompt {
