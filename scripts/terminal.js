@@ -134,9 +134,7 @@ function focusInput(e) {
 }
 
 
-
-
-window.onscroll = () => {
+function handleTerminalIcon() {
   if (window.pageYOffset > 700) {
     terminalIcon.classList.add("zoomIn")
     terminalIcon.classList.remove("zoomOut")
@@ -145,6 +143,7 @@ window.onscroll = () => {
     terminalIcon.classList.remove("zoomIn")
   }
 }
+
 
 
 function handleLoadTheme() {
@@ -157,4 +156,7 @@ function handleLoadTheme() {
   switchThemes(JSON.parse(isDarkTheme))
 }
 
+
+handleTerminalIcon()
+window.onscroll = handleTerminalIcon
 window.onload = handleLoadTheme

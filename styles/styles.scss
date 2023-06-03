@@ -229,6 +229,7 @@
   flex-direction: column;
   overflow: hidden;
 
+  resize: both;
 
   .terminal-topbar {
     height: 30px;
@@ -261,7 +262,6 @@
   }
 
   .terminal-content {
-    flex: 1;
     padding: 10px;
     overflow-y: auto;
     scrollbar-width: thin;
