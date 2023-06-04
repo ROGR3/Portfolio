@@ -163,21 +163,15 @@ function removeChildren(parent) {
 function switchThemes(isDark) {
   document.body.classList.remove("light")
   document.body.classList.remove("dark")
-  let images = document.getElementById("projects").querySelectorAll(".img")
-  console.log(images)
   if (isDark) {
     document.querySelector(".terminal-icon").style.backgroundImage = "url(../assets/terminal-white.svg)"
     document.body.classList.add("dark")
-    for (let i in images)
-      if (typeof images[i] == "object")
-        images[i].style.backgroundImage = window.getComputedStyle(images[i])["background-image"].replace("light", "dark")
+
   }
   else {
     document.querySelector(".terminal-icon").style.backgroundImage = "url(../assets/terminal.svg)"
     document.body.classList.add("light")
-    for (let i in images)
-      if (typeof images[i] == "object")
-        images[i].style.backgroundImage = window.getComputedStyle(images[i])["background-image"].replace("dark", "light")
+
   }
 }
 

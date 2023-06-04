@@ -199,22 +199,37 @@ body.dark {
   border-radius: 5px;
 }
 #projects .content .project .orchidei-img {
-  background-image: url("../assets/projects/orchidei_web_dark.png");
+  background-image: url("../assets/projects/orchidei.png");
 }
 #projects .content .project .cassandra-img {
-  background-image: url("../assets/projects/cassandra_web_dark.png");
+  background-image: url("../assets/projects/cassandra.png");
 }
 #projects .content .project .leaguestop-img {
-  background-image: url("../assets/projects/pobu_web_dark.png");
+  background-image: url("../assets/projects/pobu.png");
 }
 #projects .content .project .npm-img {
-  background-image: url("../assets/projects/lepik_web_dark.png");
+  background-image: url("../assets/projects/lepik.png");
 }
 #projects .content .project .pobu-img {
-  background-image: url("../assets/projects/pobu_web_dark.png");
+  background-image: url("../assets/projects/pobu.png");
 }
 #projects .content .project .dc-img {
-  background-image: url("../assets/projects/cassandra_web_dark.png");
+  background-image: url("../assets/projects/ryme.png");
+}
+#projects .content .project .boknom-img {
+  background-image: url("../assets/projects/boknom.png");
+}
+#projects .content .project .kotas-img {
+  background-image: url("../assets/projects/kotas.png");
+}
+#projects .content .project .ipen-img {
+  background-image: url("../assets/projects/ipen.png");
+}
+#projects .content .project .tachuela-img {
+  background-image: url("../assets/projects/tachuela.png");
+}
+#projects .content .project .pequena-img {
+  background-image: url("../assets/projects/pequena.png");
 }
 #projects .content .project p {
   padding-top: 1rem;
