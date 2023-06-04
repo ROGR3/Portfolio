@@ -13,6 +13,9 @@ function readDirRecursive(dir) {
     }
     else if (entry.isFile()) {
       let stats = fs.statSync(entryPath)
+      if (entry.name == "Thumbs.db")
+        continue
+      console.log(entry.name)
       files[entry.name] = {
         properties: {
           size: stats.size,
@@ -20,7 +23,6 @@ function readDirRecursive(dir) {
           path: `https://raw.githubusercontent.com/Borecjeborec1/Portfolio/main/${entryPath}`,
         }
       };
-      console.log(`https://raw.githubusercontent.com/Borecjeborec1/Portfolio/main/${entryPath}`)
     }
   }
   return files;

@@ -45,6 +45,43 @@ async function processCommand(input, terminalContent) {
     case "../":
       output = changeDir("..")
       break
+    case "pwd":
+      output = currentPath.join("") || window.location.host
+      break
+    case "echo":
+      output = arg
+      break
+    case "date":
+      output = (new Date()).toISOString()
+      break
+    case "whoami":
+      output = "No matter what anyone says, you're the best."
+      break
+    case "curl":
+      if (arg) {
+        try {
+          const response = await fetch(arg);
+          const data = await response.text();
+          output = data;
+        } catch (error) {
+          output = "Error retrieving URL: " + error.message;
+        }
+      } else {
+        output = "Missing URL argument";
+      }
+      break;
+    case "ping":
+      // if (arg) {
+      //   try {
+      //     output = await ping(arg);
+      //   } catch (error) {
+      //     output = error;
+      //   }
+      // } else {
+      //   output = "Missing host argument";
+      // }
+      output = "Sorry ping command is not working yet";
+      break;
     case "clear":
     case "cls":
       clearConsole(terminalContent)
@@ -141,7 +178,7 @@ function changeDir(dir) {
 }
 
 function joinPath(_arr) {
-  return _arr.join("/")
+  return _arr.join("/").replace("//", "/")
 }
 
 function getCurrentFolder(_path) {
@@ -189,6 +226,27 @@ async function loadGHFile(url) {
   return res
 }
 
+// function ping(host) {
+//   return new Promise((resolve, reject) => {
+//     const xhr = new XMLHttpRequest();
+//     const url = `https://${host}`;
 
+//     xhr.onload = function () {
+//       if (xhr.status >= 200 && xhr.status < 300) {
+//         const responseTime = xhr.responseEnd - xhr.responseStart;
+//         resolve(`Ping to ${host} succeeded. Response time: ${responseTime.toFixed(2)} ms`);
+//       } else {
+//         reject(`Ping to ${host} failed: ${xhr.statusText}`);
+//       }
+//     };
+
+//     xhr.onerror = function () {
+//       reject(`Ping to ${host} failed: ${xhr.statusText}`);
+//     };
+
+//     xhr.open('GET', url, true);
+//     xhr.send();
+//   });
+// }
 
 export { processCommand, getCurrentPath, clearConsole, switchThemes }
