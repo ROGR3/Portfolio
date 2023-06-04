@@ -1,5 +1,4 @@
 import { VIRTUAL_FS } from "./virtualfs.js";
-import { TODO } from "./todo.js";
 import { newQuote } from "./quotes.js";
 import { LANGUAGE_MESSAGES } from "./languageTexts.js"
 import { handleLanguage } from "./languages.js"
@@ -18,7 +17,6 @@ const briefHelp = [
   { name: "about <project>", description: "Detailed info about certain project" },
   { name: "resume", description: "Display the resumé" },
   { name: "contact", description: "Contact me!" },
-  { name: "todo", description: "Show the todo plan of this page!" },
   "",
   "Good luck finding others!"
 ]
@@ -29,7 +27,7 @@ let currentFolder = VIRTUAL_FS
 let quoteText = document.getElementById("randomQuote")
 newQuote(quoteText)
 
-function processCommand(input, terminalContent) {
+async function processCommand(input, terminalContent) {
   let output = ""
   let commands = input.split(" ")
   const command = commands[0]
@@ -62,6 +60,20 @@ function processCommand(input, terminalContent) {
         output = "Unknown flag"
       }
       break;
+    case "cat":
+      if (arg in currentFolder) {
+        if (arg.includes(".png") || arg.includes(".jpg")) {
+          output = `Cannot read file ${arg}`
+          break
+        }
+        let fetched = await loadGHFile(currentFolder[arg].properties.path)
+        if (fetched)
+          output = fetched
+
+      } else {
+        output = `${arg} file does not exist in the current directory`
+      }
+      break
     case "newquote":
       newQuote(quoteText)
       break;
@@ -94,15 +106,8 @@ function processCommand(input, terminalContent) {
       break;
     case "contact":
       if (!arg)
-        output = ["Fell free to contact me via email or GitHub.", "Or contact me directly from here!", "For direct message use: ", "contant  <your-email> <message>"]
-      else if (arg == "email") {
-        output = "Email send successfully!"
-      }
-      output
+        output = ["Fell free to contact me via email or GitHub. My email is atzuki@protonmail.com"]
       break;
-    case "todo":
-      output = TODO
-      break
     case "reload":
       window.location.reload()
       break;
@@ -178,6 +183,12 @@ function switchThemes(isDark) {
 function displayHelpForCmd(cmd) {
   console.log(cmd)
 }
+
+async function loadGHFile(url) {
+  let res = await fetch(url).then(res => res.text())
+  return res
+}
+
 
 
 export { processCommand, getCurrentPath, clearConsole, switchThemes }

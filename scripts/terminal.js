@@ -101,7 +101,7 @@ function createOldInput(input) {
   terminalContent.scrollTo({ top: terminalContent.scrollHeight, behavior: 'smooth' })
 }
 
-function handleInput(e) {
+async function handleInput(e) {
   if (e.key === 'Enter') {
     e.preventDefault();
     const input = terminalInput.value;
@@ -109,7 +109,8 @@ function handleInput(e) {
     selectedCommandID = -1
     terminalInput.value = '';
     createOldInput(input);
-    const output = processCommand(input, terminalContent);
+    const output = await processCommand(input, terminalContent);
+    console.log(output)
     createLine(output);
     terminalCurrentPath.innerText = getCurrentPath()
   } else if (e.key === "ArrowUp") {
