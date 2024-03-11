@@ -143,7 +143,7 @@ async function processCommand(input, terminalContent) {
       break;
     case "contact":
       if (!arg)
-        output = ["Fell free to contact me via email or GitHub. My email is atzuki@protonmail.com"]
+        output = ["Fell free to contact me via email or GitHub. My email is grundel.robin@post.cz"]
       break;
     case "reload":
       window.location.reload()

@@ -63,8 +63,8 @@ function scaleTerminal() {
   } else {
     terminalWindow.style.width = "90%"
     terminalWindow.style.height = "90%"
-    terminalWindow.style.left="0"
-    terminalWindow.style.top="0"
+    terminalWindow.style.left = "0"
+    terminalWindow.style.top = "0"
   }
 }
 
@@ -93,7 +93,7 @@ function createOldInput(input) {
   line.classList.add('terminal-line');
   const colored = document.createElement('span')
   colored.classList.add("terminal-colored")
-  colored.innerText = `https://atzuki.netlify.app/${getCurrentPath()} λ `
+  colored.innerText = `https://rogr.pages.dev/${getCurrentPath()} λ `
   const inp = document.createElement('span')
   inp.innerText = input
   terminalContent.insertBefore(line, terminalInput.parentNode);
