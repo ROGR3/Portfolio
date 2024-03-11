@@ -4,12 +4,12 @@ export const LANGUAGE_TEXT = {
     cs:"Student - Vývojář Softwarů"
   },
   buttonConnect:{
-    en:"CONNECT VIA LINKEDIN",
+    en:"CONNECT WITH ME",
     cs:"SPOJ SE SE MNOU"
   },
   sekceAbout:{
     en:"About me",
-    cs:"O mne"
+    cs:"O mně"
   },
   vzdelaniH:{
     en:"My Education",

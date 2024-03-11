@@ -63,6 +63,8 @@ function scaleTerminal() {
   } else {
     terminalWindow.style.width = "90%"
     terminalWindow.style.height = "90%"
+    terminalWindow.style.left="0"
+    terminalWindow.style.top="0"
   }
 }
 
