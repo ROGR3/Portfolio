@@ -20,7 +20,7 @@ function readDirRecursive(dir) {
         properties: {
           size: stats.size,
           isFile: true,
-          path: `https://raw.githubusercontent.com/Borecjeborec1/Portfolio/main/${entryPath}`,
+          path: `https://raw.githubusercontent.com/ROGR3/Portfolio/main/${entryPath}`,
         }
       };
     }

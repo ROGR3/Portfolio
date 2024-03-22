@@ -10,7 +10,7 @@ const PROJECTS = {
     percentage: 60,
     name: "Cassandra",
     class: "cassandra-img",
-    link: "https://github.com/Borecjeborec1/Cassandra",
+    link: "https://github.com/ROGR3/Cassandra",
     text: "Easy to use binding software. Unlike other simulating applications, Cassandra is cross-platform so you can run it on Linux or MacOS."
   },
   npm: {
@@ -24,14 +24,14 @@ const PROJECTS = {
     percentage: 60,
     name: "Pobu language",
     class: "pobu-img",
-    link: "https://github.com/Borecjeborec1/Pobu",
+    link: "https://github.com/ROGR3/Pobu",
     text: "Pobu is a programming language for creating scripts and simulating user-like events. It is using C++ in its core as an addon for NodeJS."
   },
   discord: {
     percentage: 40,
     name: "Discord bot",
     class: "dc-img",
-    link: "https://github.com/Borecjeborec1/ryme",
+    link: "https://github.com/ROGR3/ryme",
     text: "Because of popular discord bots shutdown I decided to create my own discord bots. Ryme, youtube song player, is currently running on many servers."
   },
   boknom: {
