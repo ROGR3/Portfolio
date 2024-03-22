@@ -3,7 +3,7 @@ const PROJECTS = {
     percentage: 90,
     name: "Orchidei",
     class: "orchidei-img",
-    link: "https://orchidei.netlify.app/",
+    link: "https://orchidei-6oa.pages.dev/",
     text: "Modern file manager that allows you to share your files across multiple devices. It is completely open-source and free to use. So what are you waiting for?"
   },
   cassandra: {
@@ -17,7 +17,7 @@ const PROJECTS = {
     percentage: 100,
     name: "NPM packages",
     class: "npm-img",
-    link: "https://lepikjs.netlify.app/",
+    link: "https://lepikjs.pages.dev/",
     text: "As NodeJS is my primary using technology, I developed a lot of npm packages. Containing LepikJS, LepikEvents, Kohut, KotasJS, Atzuki-Dollar and so much more!"
   },
   pobu: {
@@ -45,28 +45,28 @@ const PROJECTS = {
     percentage: 10,
     name: "KotasJS",
     class: "kotas-img",
-    link: "https://kotasjs.netlify.app/",
+    link: "https://kotasjs.pages.dev/",
     text: "JavaScript library for creating and handling mouse gestures. Extremely light-weight and simple to use"
   },
   ipen: {
     percentage: 90,
     name: "iPen",
     class: "ipen-img",
-    link: "https://ipen.netlify.app/",
+    link: "https://ipen.pages.dev/",
     text: "iPen is a minimal application for drawing on the screen. It provides a simple interface for users to create drawings using various tools and shortcuts."
   },
   tachuela: {
     percentage: 90,
     name: "Tachuela",
     class: "tachuela-img",
-    link: "https://tachuela-app.netlify.app/",
+    link: "https://tachuela.pages.dev/",
     text: "Tachuela is a powerful mobile checklist app designed to help you stay organized and boost your productivity. Whether you're managing daily tasks, or setting goals Tachuela has got you covered."
   },
   pequena: {
     percentage: 90,
     name: "Pequena",
     class: "pequena-img",
-    link: "https://pequena.netlify.app/",
+    link: "https://pequena.pages.dev/",
     text: "Pequena is a desktop creation framework that allows you to create desktop applications using web technologies such as HTML, CSS, and JavaScript."
   }
 };
